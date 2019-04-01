@@ -1,10 +1,9 @@
 ---
 title: Cloud Firestore
-date: "2019-03-21T00:00:00.000Z"
-description: Cloud Firestore
+date: "2019-04-01T00:00:00.000Z"
+description: Cloud Firestore Guide
+order: 400
 ---
-
-# Cloud Firestore
 
 ## Docs
 https://firebase.google.com/docs/firestore/
@@ -62,8 +61,8 @@ Cloud Firestore が ID を自動的に生成して、ドキュメントを新規
 
 > .add(...) と .doc().set(...) は完全に同等
 
-- IDを指定しない場合、Cloud FirestoreがIDを自動的に生成して、ドキュメントを新規登録します。
-- IDを指定且つ指定したIDのドキュメントが存在しない場合、指定したIDでドキュメントを新規登録します。
+- IDを指定しない場合、Cloud FirestoreがIDを自動的に生成して、ドキュメントを新規登録します
+- IDを指定且つ指定したIDのドキュメントが存在しない場合、指定したIDでドキュメントを新規登録します
 - IDを指定且つ指定したIDのドキュメントが存在且つドキュメント全体を上書きすることを回避するオプション({ merge: true })を指定しない場合、指定したIDでドキュメント全体を全て上書きします。（ドキュメントが置きかわります。ドキュメントに設定されていた各フィールドの値などは残りません。）
 - IDを指定且つ指定したIDのドキュメントが存在且つドキュメント全体を上書きすることを回避するオプション({ merge: true })を指定した場合、ドキュメント全体を上書きせずにドキュメントの一部のフィールドを更新します。（```update()```と同等）
 
@@ -108,10 +107,10 @@ Cloud Firestore が ID を自動的に生成して、ドキュメントを新規
 
 ### [Cloud Firestore でリアルタイム アップデートを入手する](https://firebase.google.com/docs/firestore/query-data/listen)
 
-> onSnapshot() メソッドを使用すると、ドキュメントをリッスンすることができます。コンテンツが変更されるたびに、別の呼び出しによってドキュメント スナップショットが更新されます。
+> onSnapshot() メソッドを使用すると、ドキュメントをリッスンできます。コンテンツが変更されるたびに、別の呼び出しによってドキュメント スナップショットが更新されます。
 > コンテンツが変更されるたびに、別の呼び出しによってドキュメント スナップショットが更新されます。
 
-チャットをイメージするとわかりやすいと思います。Slackなどの一般的なチャットサービスでは、画面を更新などしなくても、、最新のデータが自動で表示されますね。つまり、リッスンしているドキュメントやコレクション（クエリ）のデータが更新されると、更新を自動で検知して、自動でデータを取得することができます。
+チャットをイメージするとわかりやすいと思います。Slackなどの一般的なチャットサービスでは、画面を更新などしなくても、、最新のデータが自動で表示されますね。つまり、リッスンしているドキュメントやコレクション（クエリ）のデータが更新されると、更新を自動で検知して、自動でデータを取得できます。
 
 Reactなどを使用したSPAでは、再描画のコストを削減するためにも、全件取得・全件再描画するのではなく、[スナップショット間の変更の表示](https://firebase.google.com/docs/firestore/query-data/listen#view_changes_between_snapshots)を使用して、変更があったデータのみを判定し、コンポーネントを更新した方がよいです。
 
@@ -125,7 +124,7 @@ Cloud Firestoreの弱点である、クリティカルな制限が多いので�
 
 データの保護については、全てに必ず目を通してください。
 
-[ユーザーとグループのデータアクセスを保護する](https://firebase.google.com/docs/firestore/solutions/role-based-access)についても、目を通すと理解が深まります。
+[ユーザーとグループのデータアクセスを保護する](https://firebase.google.com/docs/firestore/solutions/role-based-access)、[rules/index-all](https://firebase.google.com/docs/reference/rules/index-all)についても、目を通すと理解が深まります。
 
 ### [割り当てと制限](https://firebase.google.com/docs/firestore/quotas)
 
@@ -138,8 +137,8 @@ Cloud Firestoreの弱点である、クリティカルな制限が多いので�
 
 ## Caution
 
-- セキュリティルールは必ず設定しましょう。
-- トランザクション内部の処理は再実行される可能性があります。トランザクション内部の処理で、外部APIを使用している場合は特に注意が必要です。
+- セキュリティルールは必ず設定しましょう
+- トランザクション内部の処理は再実行される可能性があります
 
 ## FAQ
 
@@ -165,11 +164,10 @@ Cloud Firestoreの弱点である、クリティカルな制限が多いので�
 
 > ほとんどのグラフで、ディメンションと指標をそれぞれ 20 種類まで指定できるようになっています。期間グラフは最大 20 種類の指標に対応、表はディメンション 10 種類と指標最大 20 種類に対応しています。
 
-Cloud Functions, App Engineは多少の実装は必要です。
-
-BigQueryのクエリの作成にも多少時間がかかりますが、数日で実装できる内容です。
+App EngineやBigQueryのクエリの作成に多少時間がかかりますが、数日で実装できる内容です。
 
 - App EngineでCloud StorageからBigQueryにエクスポート([Cloud Firestore のエクスポートからのデータの読み込み](https://cloud.google.com/bigquery/docs/loading-data-cloud-firestore)で、APIを使用して[分割テーブル](https://cloud.google.com/bigquery/docs/partitioned-tables#partitioned_tables)として蓄積)([Cloud Scheduler](https://cloud.google.com/scheduler/)でApp EngineのURLを指定して定期実行)
   - [Cloud Firestore のオプション](https://cloud.google.com/bigquery/docs/loading-data-cloud-firestore#cloud_firestore_options)に記載されている[projectionFields](https://cloud.google.com/bigquery/docs/reference/rest/v2/jobs#configuration.load.projectionFields)を指定して、個人情報・機密情報に当たるフィールドを除外してデータをBigQueryにエクスポートしましょう
 - BigQueryの[Schedule Query](https://cloud.google.com/bigquery/docs/scheduling-queries)でデータ集計・整形(月次テーブル)
-- [データポータル](https://datastudio.google.com/)で月次テーブルを可視化
+    - Schedule Queryの設定で、Cloud Pub/Sub topicを設定した場合は、Cloud FunctionsからSlackなどに通知するように設定しておくと便利です
+- [データポータル](https://datastudio.google.com/overview)で月次テーブルを可視化

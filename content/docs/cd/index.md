@@ -1,19 +1,18 @@
 ---
 title: Firebase Deployment
-date: "2019-03-21T00:00:00.000Z"
-description: Firebase Authentication
+date: "2019-04-01T00:00:00.000Z"
+description: Firebase Deployment Guide
+order: 900
 ---
-
-# Firebase Deployment
 
 [Cloud Build](https://cloud.google.com/cloud-build/)でFirebaseのデプロイを行う方法を紹介します。各種設定ファイルの内容などは一例ですので、ご自身の環境に併せて変更する必要があります。
 
 ## setup gcloud
 
 ```
-gcloud config configurations create [configuration-name]
-gcloud config set project [project-name]
-gcloud config set account [mail-address]
+$ gcloud config configurations create [configuration-name]
+$ gcloud config set project [project-name]
+$ gcloud config set account [mail-address]
 ```
 
 ## build images
@@ -26,14 +25,14 @@ gcloud config set account [mail-address]
 例では[ghq](https://github.com/motemen/ghq)を使用していますが、リポジトリをcloneするだけでよいです。
 
 ```
-ghq get git@github.com:GoogleCloudPlatform/cloud-builders-community.git
-cd firebase
-gcloud builds submit --config cloudbuild.yaml .
-ghq get git@github.com:GoogleCloudPlatform/cloud-builders.git
-cd yarn
-gcloud builds submit --config cloudbuild.yaml .
-cd ../npm
-gcloud builds submit --config cloudbuild.yaml .
+$ ghq get git@github.com:GoogleCloudPlatform/cloud-builders-community.git
+$ cd firebase
+$ gcloud builds submit --config cloudbuild.yaml .
+$ ghq get git@github.com:GoogleCloudPlatform/cloud-builders.git
+$ cd yarn
+$ gcloud builds submit --config cloudbuild.yaml .
+$ cd ../npm
+$ gcloud builds submit --config cloudbuild.yaml .
 ```
 
 ## 認証トークンの取得・暗号化
@@ -41,15 +40,15 @@ gcloud builds submit --config cloudbuild.yaml .
 #### 認証トークンの取得
 
 ```
-firebase login:ci
+$ firebase login:ci
 ```
 
 #### 認証トークンの暗号化
 
 ```
-gcloud kms keyrings create cloudbuilder --location global
-gcloud kms keys create firebase-token --location global --keyring cloudbuilder --purpose encryption
-echo -n [認証トークン] | gcloud kms encrypt \
+$ gcloud kms keyrings create cloudbuilder --location global
+$ gcloud kms keys create firebase-token --location global --keyring cloudbuilder --purpose encryption
+$ echo -n [認証トークン] | gcloud kms encrypt \
   --plaintext-file=- \
   --ciphertext-file=- \
   --location=global \
@@ -60,7 +59,7 @@ echo -n [認証トークン] | gcloud kms encrypt \
 #### 環境変数の暗号化(dotenvを使用している前提 | .env -> .env.prod.enc)
 
 ```
-gcloud kms encrypt \
+$ gcloud kms encrypt \
   --plaintext-file=.env \
   --ciphertext-file=.env.prod.enc \
   --location=global \
@@ -235,8 +234,9 @@ secrets:
   name: 'gcr.io/$PROJECT_ID/firebase'
   args: ['deploy', '--only', 'functions', '--project=project-name']
 ```
-## [ビルドトリガーを使用したビルドの自動化](https://cloud.google.com/cloud-build/docs/running-builds/automate-builds)
 
-コンソールからビルドトリガーを設定します。リポジトリやブランチなどのビルド対象・条件を指定し、Cloud Build構成ファイルの場所に、cloudbuild.yamlを指定するだけです。後は、指定したトリガーを検知して、自動でビルドされます。
+## ビルドトリガー
+
+[ビルドトリガーを使用したビルドの自動化](https://cloud.google.com/cloud-build/docs/running-builds/automate-builds)に従って、コンソールからビルドトリガーを設定します。リポジトリやブランチなどのビルド対象・条件を指定し、Cloud Build構成ファイルの場所に、cloudbuild.yamlを指定するだけです。後は、指定したトリガーを検知して、自動でビルドされます。
 
 ビルドトリガーを設定後に、Cloud Functionsによる[Slack 通知](https://cloud.google.com/cloud-build/docs/configure-third-party-notifications#slack_notifications)をすると便利です。

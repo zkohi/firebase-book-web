@@ -1,10 +1,9 @@
 ---
 title: Firebase Hosting
-date: "2019-03-21T00:00:00.000Z"
-description: Firebase Hosting
+date: "2019-04-01T00:00:00.000Z"
+description: Firebase Hosting Guide
+order: 600
 ---
-
-# Firebase Hosting
 
 ## Docs
 https://firebase.google.com/docs/hosting/
@@ -27,12 +26,14 @@ https://firebase.google.com/docs/hosting/
 
 ### 1つのFirebaseプロジェクトで、複数のHostingサイトを関連付ける場合（管理画面などを別サイトとして構築したい場合）
 
-[複数のサイトでプロジェクトのリソースを共有する](https://firebase.google.com/docs/hosting/multisites)に、下記の記載がありますが、2019/03時点ですでに使用することができています。
 
 > 注意: このページでは、今後提供される Firebase Hosting の機能を簡潔に紹介しています。1 つの Firebase プロジェクトへの複数の Hosting サイトの関連付けについては、まもなくサポートが開始されます。
 
-記載の通り、Blazeプラン（従量課金）にする必要があります。
+[複数のサイトでプロジェクトのリソースを共有する](https://firebase.google.com/docs/hosting/multisites)に、上記の記載がありますが、2019/03時点ですでに使用できています。
+
 > 注: 複数の Hosting サイトを作成するには、Blaze お支払いプランをご利用いただく必要があります。
+
+記載の通り、Blazeプラン（従量課金）にする必要があります。
 
 ### [SDK の自動構成](https://firebase.google.com/docs/hosting/reserved-urls#sdk_auto-configuration)
 
@@ -68,20 +69,25 @@ Basic認証でアクセス制限することはできますか？
 
 Firebase Hostingの機能として、Basic認証などによるアクセス制限はできません。
 
-Cloud Functionsを使用して、Basic認証(もどき)をかけることはできます。 但し、[ホスティングの優先順位](https://firebase.google.com/docs/hosting/url-redirects-rewrites#section-priorities)に記載の通り、リライトの設定よりも、正確に一致する静的コンテンツの方が優先度が高いので、```/```のアクセスはBasic認証かかるが、```/index.html```のアクセスはBasic認証がかかりません。
+Cloud Functionsを使用して、Basic認証(もどき)をかけることはできます。 但し、[ホスティングの優先順位](https://firebase.google.com/docs/hosting/full-config#section-priorities)に記載の通り、リライトの設定よりも、正確に一致する静的コンテンツの方が優先度が高いので、```/```のアクセスはBasic認証かかるが、```/about.html```のアクセスはBasic認証がかかりません。
 
 > 異なる構成オプションが競合することがあります。競合が発生した場合、Firebase Hosting からのレスポンスは次の優先順位に従って決定されます。
 > 
-> - 1.予約済み名前空間（/__*）
-> - 2.リダイレクトの構成
-> - 3.正確に一致する静的コンテンツ
-> - 4.リライトの構成
-> - 5.カスタムの 404 ページ
-> - 6.デフォルトの 404 ページ
+> 1.予約済み名前空間（/__*）
+>
+> 2.リダイレクトの構成
+>
+> 3.正確に一致する静的コンテンツ
+>
+> 4.リライトの構成
+>
+> 5.カスタムの 404 ページ
+>
+> 6.デフォルトの 404 ページ
 
 ##### 実装例
 
-ホスティングの優先順位で説明した通り、正確に一致する静的コンテンツはBasic認証がかからないので、HTMLさえ取得できればHTMLに記載れているCSS, IMGなどは普通に取得でき、Webページが正常に表示できます。
+※仮にBasic認証を設定しても、ホスティングの優先順位で説明した通り、正確に一致する静的コンテンツはBasic認証がかからないので、HTMLさえ取得できればHTMLに記載れているCSS, IMGなどは普通に取得でき、Webページが正常に表示できます。
 
 - レスポンスとして返すHTMLファイルをCloud Storageにアップロードする
 - [関数に Hosting リクエストを送信する](https://firebase.google.com/docs/hosting/functions#direct_hosting_requests_to_your_function)のように、リライト設定でCloud Functionsを指定

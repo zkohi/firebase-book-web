@@ -1,8 +1,8 @@
 module.exports = {
   siteMetadata: {
-    title: `firebase book web`,
+    title: `Firebase Sub-Guide`,
     author: `zkohi`,
-    description: `firebase book web.`,
+    description: `Firebase Sub-Guide.`,
     siteUrl: `https://firebase-book-web.netlify.com/`,
     social: {
       twitter: `zkohi`,
@@ -69,6 +69,7 @@ module.exports = {
     `gatsby-plugin-offline`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-typescript`,
+    `gatsby-plugin-styled-components`,
     {
       resolve: `gatsby-plugin-typography`,
       options: {

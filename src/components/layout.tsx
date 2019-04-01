@@ -3,11 +3,27 @@ import { Link } from "gatsby"
 
 // @ts-ignore
 import { rhythm, scale } from "../utils/typography"
+import styled from "styled-components"
+
+const Container = styled.div`
+  margin: 3rem auto;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`
+
+const HeaderTitle = styled.h3`
+  text-align: center;
+  fontFamily: Montserrat, sans-serif
+  marginTop: 0;
+`
 
 class Layout extends React.Component<any, any> {
   render() {
     const { location, title, children } = this.props
-// @ts-ignore
+    // @ts-ignore
     const rootPath = `${__PATH_PREFIX__}/`
     let header
 
@@ -15,8 +31,8 @@ class Layout extends React.Component<any, any> {
       header = (
         <h1
           style={{
-            ...scale(1.5),
-            marginBottom: rhythm(1.5),
+            ...scale(1.2),
+            marginBottom: rhythm(1),
             marginTop: 0,
           }}
         >
@@ -34,7 +50,7 @@ class Layout extends React.Component<any, any> {
       )
     } else {
       header = (
-        <h3
+        <HeaderTitle
           style={{
             fontFamily: `Montserrat, sans-serif`,
             marginTop: 0,
@@ -50,26 +66,28 @@ class Layout extends React.Component<any, any> {
           >
             {title}
           </Link>
-        </h3>
+        </HeaderTitle>
       )
     }
     return (
-      <div
-        style={{
-          marginLeft: `auto`,
-          marginRight: `auto`,
-          maxWidth: rhythm(24),
-          padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
-        }}
-      >
-        <header>{header}</header>
-        <main>{children}</main>
-        <footer>
-          // © {new Date().getFullYear()}, Built with
-          // {` `}
-          // <a href="https://www.gatsbyjs.org">Gatsby</a>
-        </footer>
-      </div>
+      <Container>
+        <div
+          style={{
+            marginLeft: `auto`,
+            marginRight: `auto`,
+            maxWidth: rhythm(24),
+            padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
+          }}
+        >
+          <header>{header}</header>
+          <main>{children}</main>
+          <footer>
+            © {new Date().getFullYear()}, Built with
+            {` `}
+            <a href="https://www.gatsbyjs.org">Gatsby</a>
+          </footer>
+        </div>
+      </Container>
     )
   }
 }

@@ -1,10 +1,9 @@
 ---
 title: Cloud Functions for Firebase
-date: "2019-03-21T00:00:00.000Z"
-description: Cloud Functions for Firebase
+date: "2019-04-01T00:00:00.000Z"
+description: Cloud Functions for Firebase Guide
+order: 700
 ---
-
-# Cloud Functions for Firebase
 
 ## Docs
 https://firebase.google.com/docs/functions/
@@ -12,19 +11,27 @@ https://firebase.google.com/docs/functions/
 ## Point
 
 > 以下のような他の Firebase および Google Cloud 機能によって生成されたイベントに応答できます。
-> - Cloud Firestore トリガー
-> - Realtime Database トリガー
-> - Remote Config トリガー
-> - Firebase Authentication トリガー
-> - Firebase 向け Google アナリティクス トリガー
-> - Crashlytics トリガー
-> - Cloud Storage トリガー
-> - Cloud Pub/Sub トリガー
-> - HTTP トリガー
+> Cloud Firestore トリガー
+>
+> Realtime Database トリガー
+>
+> Remote Config トリガー
+>
+> Firebase Authentication トリガー
+>
+> Firebase 向け Google アナリティクス トリガー
+>
+> Crashlytics トリガー
+>
+> Cloud Storage トリガー
+>
+> Cloud Pub/Sub トリガー
+>
+> HTTP トリガー
 
 各種イベントをトリガーにして、処理が実行されます。
 
-[TypeScriptを使用できますので、[Cloud Functions に TypeScript を使用する](https://firebase.google.com/docs/functions/typescript)に従って、TypeScriptで実装することを推奨します。
+TypeScriptを使用できますので、[Cloud Functions に TypeScript を使用する](https://firebase.google.com/docs/functions/typescript)に従って、TypeScriptで実装することを推奨します。
 
 特に見落としがちだったり、重要な項目を下記に挙げています。
 
@@ -36,7 +43,7 @@ https://firebase.google.com/docs/functions/
 
 ### [関数のデプロイとランタイム オプションを管理する](https://firebase.google.com/docs/functions/manage-functions)
 
-> デフォルトでは、Firebase CLI によって index.js 内のすべてのファンクションが同時にデプロイされます。
+> デフォルトでは、Firebase CLI によって about.js 内のすべてのファンクションが同時にデプロイされます。
 > 膨大な数の関数をデプロイすると、標準の割り当てを超えてしまい、HTTP 429 Quota エラー メッセージが表示されることがあります。
 
 30個程度であれば、たまに、タイムアウトでエラーになることはなりますが、全関数を同時にデプロイしても問題なく動作しています。
@@ -99,3 +106,7 @@ contextでユーザのログイン状態やカスタムクレーム・属性情�
 > バックグラウンドファンクションの最大非アクティブ時間	| 呼び出しを行わずにバックグラウンド ファンクションを保持できる最大時間。この時間中に 1 回も呼び出されなかったファンクションは、新しいイベントが発生してもトリガーされない状態になることがあります。この状態になった場合は、該当のファンクションを再デプロイして処理を再開する必要があります。
 
 月次バッチの場合は30日を超える可能性があるので、注意してください。
+
+### Google以外のサードパーティAPIを使用するなどして、外部への通信が発生する場合
+
+アカウントの課金設定と[有料プラン](https://firebase.google.com/pricing/)への変更が必要です。
