@@ -10,9 +10,9 @@ order: 900
 ## setup gcloud
 
 ```
-$ gcloud config configurations create [configuration-name]
-$ gcloud config set project [project-name]
-$ gcloud config set account [mail-address]
+$ gcloud config configurations create <configurationName>
+$ gcloud config set project <projectName>
+$ gcloud config set account <mailAddress>
 ```
 
 ## build images
@@ -48,7 +48,7 @@ $ firebase login:ci
 ```
 $ gcloud kms keyrings create cloudbuilder --location global
 $ gcloud kms keys create firebase-token --location global --keyring cloudbuilder --purpose encryption
-$ echo -n [認証トークン] | gcloud kms encrypt \
+$ echo -n <認証トークン> | gcloud kms encrypt \
   --plaintext-file=- \
   --ciphertext-file=- \
   --location=global \
@@ -162,9 +162,9 @@ service firebase.storage {
 
 ```
 secrets:
-- kmsKeyName: projects/[project-name]/locations/global/keyRings/cloudbuilder/cryptoKeys/firebase-token
+- kmsKeyName: projects/<projectName>/locations/global/keyRings/cloudbuilder/cryptoKeys/firebase-token
   secretEnv:
-    FIREBASE_TOKEN: [暗号化した認証トークン]
+    FIREBASE_TOKEN: <暗号化した認証トークン>
 steps:
 - id: 'decrypt .env'
   name: 'gcr.io/cloud-builders/gcloud'
@@ -197,26 +197,26 @@ steps:
 
 - id: "deploy firebase storage"
   name: 'gcr.io/$PROJECT_ID/firebase'
-  args: ['deploy', '--only', 'storage', '--project=project-name']
+  args: ['deploy', '--only', 'storage', '--project=<projectName>']
   secretEnv: ['FIREBASE_TOKEN']
 
 - id: "deploy firebase firestore"
   name: 'gcr.io/$PROJECT_ID/firebase'
-  args: ['deploy', '--only', 'firestore', '--project=project-name']
+  args: ['deploy', '--only', 'firestore', '--project=<projectName>']
   secretEnv: ['FIREBASE_TOKEN']
 
 - id: "deploy firebase hosting"
   name: 'gcr.io/$PROJECT_ID/firebase'
-  args: ['deploy', '--only', 'hosting', '--project=project-name']
+  args: ['deploy', '--only', 'hosting', '--project=<projectName>']
 ```
 
 #### functions
 
 ```
 secrets:
-- kmsKeyName: projects/[project-name]/locations/global/keyRings/cloudbuilder/cryptoKeys/firebase-token
+- kmsKeyName: projects/<projectName>/locations/global/keyRings/cloudbuilder/cryptoKeys/firebase-token
   secretEnv:
-    FIREBASE_TOKEN: [暗号化した認証トークン]
+    FIREBASE_TOKEN: <暗号化した認証トークン>
 
 - id: 'cp fireabase.json'
   name: 'gcr.io/cloud-builders/gcloud'
@@ -232,7 +232,7 @@ secrets:
 
 - id: "deploy firebase"
   name: 'gcr.io/$PROJECT_ID/firebase'
-  args: ['deploy', '--only', 'functions', '--project=project-name']
+  args: ['deploy', '--only', 'functions', '--project=<projectName>']
 ```
 
 ## ビルドトリガー

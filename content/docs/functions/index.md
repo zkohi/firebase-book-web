@@ -31,7 +31,9 @@ https://firebase.google.com/docs/functions/
 
 各種イベントをトリガーにして、処理が実行されます。
 
-TypeScriptを使用できますので、[Cloud Functions に TypeScript を使用する](https://firebase.google.com/docs/functions/typescript)に従って、TypeScriptで実装することを推奨します。
+[firebase/functions-samples](https://github.com/firebase/functions-samples)に各種実装例があるので、一通り目を通しておくとよいでしょう。
+
+また、TypeScriptを使用できますので、[Cloud Functions に TypeScript を使用する](https://firebase.google.com/docs/functions/typescript)に従って、TypeScriptで実装することを推奨します。
 
 特に見落としがちだったり、重要な項目を下記に挙げています。
 
