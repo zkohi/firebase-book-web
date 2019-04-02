@@ -1,7 +1,7 @@
 {
-  "name": "firebase-book-web",
+  "name": "firebase-sub-guides",
   "private": true,
-  "description": "firebase book",
+  "description": "firebase sub guides",
   "version": "0.1.0",
   "author": "zkohi <kohiandrew@gmail.com>",
   "dependencies": {
@@ -48,7 +48,7 @@
   "main": "n/a",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/zkohi/firebase-book-web.git"
+    "url": "git+https://github.com/zkohi/firebase-sub-guides.git"
   },
   "scripts": {
     "build": "gatsby build",
