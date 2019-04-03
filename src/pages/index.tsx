@@ -42,6 +42,11 @@ class BlogIndex extends React.Component<any, any> {
           </a>
           を引用して説明を行っています。公式ドキュメントでは不足している情報や注意点・必ず目を通しておくべき内容などを記載しておりますので、補足情報として役に立てていただければ幸いです。
         </p>
+        <p>
+          firebaseを使用したことがない方でも、
+          <a href="https://firebase.google.com/docs/samples/p">公式サンプル</a>
+          が多数あるので、ご自身で試してみるとfirebaseに対する理解が深まります。
+        </p>
         {posts.map(({ node }) => {
           const title = node.frontmatter.title || node.fields.slug
           return (

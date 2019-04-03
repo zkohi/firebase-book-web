@@ -22,6 +22,9 @@ Wordpress2016.overrideThemeStyles = () => {
     h6: {
       "text-transform": `none`,
     },
+    "ul,ol": {
+      "margin-left": `1.75rem`,
+    },
     footer: {
       margin: `1rem auto`,
       "text-align": `center`,
@@ -51,18 +54,9 @@ Wordpress2016.overrideThemeStyles = () => {
   }
 }
 
-const additionalSetting = {
-  "h2:before": {
-    content: `#`,
-  },
-  "h3:before": {
-    content: `🚀`,
-  },
-}
-
 delete Wordpress2016.googleFonts
 
-const typography = new Typography({ ...Wordpress2016, ...additionalSetting })
+const typography = new Typography(Wordpress2016)
 
 // Hot reload typography in development.
 if (process.env.NODE_ENV !== `production`) {

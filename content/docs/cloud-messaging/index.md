@@ -28,9 +28,9 @@ try {
 }
 ```
 
-基本的にドキュメント通りに進めるだけで、メッセージの送受信はできます。
+基本的にドキュメント通りに進めるだけで、メッセージの送受信はできます。 併せて、[Firebase Cloud Messaging Quickstart](https://github.com/firebase/quickstart-js/tree/master/messaging)に、目を通すと理解が深まります。
 
-ここでは、Firebase Authenticationでアカウントを作成したアカウントが、複数のデバイス（PC/スマートフォン）を使用しており、複数のデバイスに一括でメッセージを送信したい場合について説明します。
+例として、Firebase Authenticationでアカウントを作成したアカウントが、複数のデバイス（PC/スマートフォン）を使用しており、複数のデバイスに一括でメッセージを送信したい場合について説明します。
 
 この場合は、[デバイス グループにメッセージを送信する](https://firebase.google.com/docs/cloud-messaging/js/device-group)で実現できます。各処理はCloud Functionsで実装するとよいでしょう。
 

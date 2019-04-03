@@ -45,6 +45,7 @@ boolean/numberで設定できるようなユーザーの属性情報は、カス
 - Facebookアプリを公開する
 
 ※Facebookアプリを公開していないと、Facebook認証でエラーになります。
+
 ※個人開発などで、自分のアカウントで登録したFacebookアプリを使用して開発をしている且つ自分のアカウントでしか認証のテストをしていない場合、アプリを公開していなくても自分のアカウントでは認証はエラーにならず、正常にFacebook認証で登録できてしまうので、Facebookアプリを公開することを忘れてしまう場合があります。
 
 ## FAQ
@@ -68,11 +69,11 @@ FirestoreからCloud Storageへのエクスポートについては、[データ
 
 ドキュメントでは、App Engineのcron.yamlを使用する例になっていますが、cron.yamlではなく[Cloud Scheduler](https://cloud.google.com/scheduler/docs/creating)を使用した方がよいです。Cloud SchedulerでApp EngineのURLを指定します。
 
-任意のユーザーがApp EngineのURLにアクセスできてしまうと、セキュリティーの観点で問題なので、[app.yaml ファイルの handlers 要素に login: admin を指定する](https://cloud.google.com/appengine/docs/standard/python/config/appref#handlers_login)か、[Cloud IAP アクセスの設定](https://cloud.google.com/iap/docs/app-engine-quickstart#iap-access)を行い、アクセスできるユーザーを制限します。
+任意のユーザーがApp EngineのURLにアクセスできてしまうと、セキュリティーの観点で問題なので、[Cloud IAP アクセスの設定](https://cloud.google.com/iap/docs/app-engine-quickstart#iap-access)を行い、アクセスできるユーザーを制限します。
 
 BigQueryのクエリの作成にも多少時間がかかりますが、数日で実装できる内容です。
 
-- Cloud FunctionsでFirestoreにエクスポート([Cloud Scheduler](https://cloud.google.com/scheduler/)でPubSubのトピックを指定して定期実行)
+- Cloud Functionsで[admin.auth().listUsers()](https://firebase.google.com/docs/reference/admin/node/admin.auth.Auth#listUsers)を使用して、500件毎にFirestoreに一括書き込みでエクスポート([Cloud Scheduler](https://cloud.google.com/scheduler/)でPubSubのトピックを指定して定期実行)
 - App EngineでFirestoreからCloud Storageにエクスポート([Cloud Scheduler](https://cloud.google.com/scheduler/)でApp EngineのURLを指定して定期実行)
 - App EngineでCloud StorageからBigQueryにエクスポート([Cloud Firestore のエクスポートからのデータの読み込み](https://cloud.google.com/bigquery/docs/loading-data-cloud-firestore)で、APIを使用して[分割テーブル](https://cloud.google.com/bigquery/docs/partitioned-tables#partitioned_tables)として蓄積)([Cloud Scheduler](https://cloud.google.com/scheduler/)でApp EngineのURLを指定して定期実行)
 - BigQueryの[Schedule Query](https://cloud.google.com/bigquery/docs/scheduling-queries)でデータ集計・整形(月次テーブル)

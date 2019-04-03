@@ -137,8 +137,13 @@ Cloud Firestoreの弱点である、クリティカルな制限が多いので�
 
 ## Caution
 
-- セキュリティルールは必ず設定しましょう
 - トランザクション内部の処理は再実行される可能性があります
+- [Cloud Firestore でのデータの保護](https://firebase.google.com/docs/firestore/security/overview)を読んで、セキュリティルールを必ず設定しましょう
+-  セキュリティルールのテストについては、下記が参考になります
+  - https://techlife.cookpad.com/entry/2018/11/05/143000
+  - https://github.com/sgr-ksmt/firestore-emulator-rules-test
+  - https://github.com/firebase/quickstart-nodejs/tree/master/firestore-emulator/typescript-quickstart
+  - https://github.com/zkohi/firebase-testing-samples
 
 ## FAQ
 
@@ -152,7 +157,7 @@ Cloud Firestoreの弱点である、クリティカルな制限が多いので�
 
 ドキュメントでは、App Engineのcron.yamlを使用する例になっていますが、cron.yamlではなく[Cloud Scheduler](https://cloud.google.com/scheduler/docs/creating)を使用した方がよいです。Cloud SchedulerでApp EngineのURLを指定します。
 
-任意のユーザーがApp EngineのURLにアクセスできてしまうと、セキュリティーの観点で問題なので、[app.yaml ファイルの handlers 要素に login: admin を指定する](https://cloud.google.com/appengine/docs/standard/python/config/appref#handlers_login)か、[Cloud IAP アクセスの設定](https://cloud.google.com/iap/docs/app-engine-quickstart#iap-access)を行い、アクセスできるユーザーを制限します。
+任意のユーザーがApp EngineのURLにアクセスできてしまうと、セキュリティーの観点で問題なので、[Cloud IAP アクセスの設定](https://cloud.google.com/iap/docs/app-engine-quickstart#iap-access)を行い、アクセスできるユーザーを制限します。
 
 ### Q.2
 

@@ -83,7 +83,7 @@ Cloud Functionsで使用する環境変数を設定できます。サードパ�
 
 ### [Cloud Pub/Sub トリガー](https://firebase.google.com/docs/functions/pubsub-events)
 
-デプロイすると、自動でトピックとサブスクリプションも設定されます。
+デプロイすると、自動でトピックとサブスクリプションが設定されます。
 
 [onPublish(handler)](https://firebase.google.com/docs/reference/functions/functions.pubsub.TopicBuilder#onPublish)でも、handlerの第２引数に[context](https://firebase.google.com/docs/reference/functions/functions.EventContext)が設定されるので、[無限再試行ループを避けるための終了条件の設定](https://firebase.google.com/docs/functions/retries#set_an_end_condition_to_avoid_infinite_retry_loops)を設定できます。
 
