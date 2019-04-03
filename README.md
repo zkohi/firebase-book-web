@@ -1,1 +1,13 @@
-# firebase-book-web
+# Firebase Sub Guides
+
+## Setup
+
+```
+npm i
+```
+
+## develop
+
+```
+gatsby develop
+```
