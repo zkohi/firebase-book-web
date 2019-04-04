@@ -1,20 +1,20 @@
 ---
-title: Setup 
+title: Firebase Setup 
 date: "2019-04-01T00:00:00.000Z"
-description: Setup Guide
+description: Firebase Setup Guide
 order: 200
 ---
 
 ## Docs
-https://firebase.google.com/docs/web/setup
+<https://firebase.google.com/docs/web/setup>
 
 ## Point
 
-初期設定を行うだけですので、ドキュメント通り実施すれば、つまずくことはありません。
+firebaseの初期化の方法が記載されています。databaseやmessagingなど、使用しないfirebaseの機能は読み込む必要はないです。
 
-基本的には、記載の通りですが、databaseやmessagingなど、使用しないfirebaseのコンポーネントは読み込む必要はないです。
+手始めに、[Firebase Web Codelab](https://codelabs.developers.google.com/codelabs/firebase-web/#0) を使用して、実際に体験するのがよいと思います。
 
-使用するfirebaseのコンポーネントだけに絞りましょう。
+ホスティングするだけだったり、極めて小規模のサービスの場合は、上記サンプルでも十分かもしれませんが、実際の開発では、[webpack](https://webpack.js.org/), [dotenv](https://www.npmjs.com/package/dotenv)などを使用して、ビルドやローカルウェブサーバーの起動などをするのが一般的だと思います。
 
 プロジェクトは最低限、開発環境・本番環境・テスト環境で分けた方がいいです。
 
@@ -25,15 +25,17 @@ https://firebase.google.com/docs/web/setup
 ## FAQ
 
 ### Q.1
-ドキュメントに従って初期設定を進めると、configとして設定する値をHTMLとして、コピー＆ペーストするようですが、configに設定している設定値が外部公開されてしまうということでしょうか？
+
+ドキュメントに従って初期化を進めると、configとして設定する値をHTMLファイルにコピー＆ペーストするようですが、configに設定している設定値が外部公開されてしまうということでしょうか？
 
 #### A.1
 はい。外部からアクセスできる環境にデプロイすれば、当然、configに設定している設定値が外部公開されます。
 
-プロジェクトは最低限、開発環境・本番環境・テスト環境で分けた方が良いので、私の場合は、webpack, dotenvで環境変数を使用してconfigを読み込み、firebaseの初期設定を行っています。
+プロジェクトは最低限、開発環境・本番環境・テスト環境で分けた方が良いので、私の場合は、[dotenv](https://www.npmjs.com/package/dotenv)で環境変数からconfigの設定値を読み込んでfirebaseの初期化を行い、[webpack](https://webpack.js.org/)などでビルドやローカルウェブサーバーの起動を行っています。
 
 ### Q.2
-configに設定している設定値が外部公開されてもセキュリティーとしては問題ないのでしょうか？問題ないという記事が多いのですが。
+
+configに設定している設定値が外部公開されてもセキュリティーとしては問題ないのでしょうか？
 
 #### A.2
 
