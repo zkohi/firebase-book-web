@@ -79,3 +79,5 @@ BigQueryのクエリの作成にも多少時間がかかりますが、数日で
 - BigQueryの[Schedule Query](https://cloud.google.com/bigquery/docs/scheduling-queries)でデータ集計・整形(月次テーブル)
   - Schedule Queryの設定で、Cloud Pub/Sub topicを設定した場合は、Cloud FunctionsからSlackなどに通知するように設定しておくと便利です
 - [データポータル](https://datastudio.google.com/overview)で月次テーブルを可視化
+
+Cloud Functions, App Engineの実装については、[サンプル](https://github.com/zkohi/firebase-export-firestore-to-bigquery-samples)をご参照ください。
