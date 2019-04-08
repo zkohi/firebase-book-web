@@ -5,7 +5,8 @@ description: Firebase Setup Guide
 order: 200
 ---
 
-## Docs
+# [Setup](https://firebase.google.com/docs/web/setup)
+
 <https://firebase.google.com/docs/web/setup>
 
 ## Point

@@ -33,19 +33,19 @@ class BlogIndex extends React.Component<any, any> {
         />
         {/*<Bio />*/}
         <p>
-          このガイドの内容は、私が実際にfirebaseをウェブアプリ（JavaScript）で使用した際の経験を元にした情報を記載しております。ウェブアプリ以外を使用する場合でも、firebaseの各種機能を使用する上で、有益な情報も多くあると思います。
+          このガイドの内容は、私が実際にfirebaseを使用して、JavaScript（ウェブ）アプリを実装した際の経験を元に、コンテンツを記載しております。ウェブアプリ以外を使用する場合でも、firebaseの各種機能を使用する上で、有益な情報も多くあると思います。
         </p>
         <p>
           主に
           <a href="https://firebase.google.com/docs/web/setup">
             公式ドキュメント
           </a>
-          を引用して説明を行っています。公式ドキュメントでは不足している情報や注意点・必ず目を通しておくべき内容などを記載しておりますので、補足情報として役に立てていただければ幸いです。
+          を引用して補足説明を追加したり、公式ドキュメントでは不足している情報や注意点・必ず目を通しておくべき内容などを記載しております。公式ドキュメントではありませんので、補足情報として役に立てていただければ幸いです。
         </p>
         <p>
           firebaseを使用したことがない方でも、
           <a href="https://firebase.google.com/docs/samples/p">公式サンプル</a>
-          が多数あるので、ご自身で試してみるとfirebaseに対する理解が深まります。
+          が多数あるので、ご自身で試してみるとfirebaseに対する理解が深まります。是非、firebaseをお試しください。
         </p>
         {posts.map(({ node }) => {
           const title = node.frontmatter.title || node.fields.slug

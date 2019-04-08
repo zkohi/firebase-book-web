@@ -5,7 +5,8 @@ description: Firebase Cloud Messaging Guide
 order: 800
 ---
 
-## Docs
+## Firebase Docs
+
 https://firebase.google.com/docs/cloud-messaging/
 
 ## Point

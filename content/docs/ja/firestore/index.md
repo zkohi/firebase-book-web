@@ -5,7 +5,8 @@ description: Cloud Firestore Guide
 order: 400
 ---
 
-## Docs
+## Firebase Docs
+
 https://firebase.google.com/docs/firestore/
 
 ## Point

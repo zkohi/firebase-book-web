@@ -24,7 +24,7 @@ class Layout extends React.Component<any, any> {
   render() {
     const { location, title, children } = this.props
     // @ts-ignore
-    const rootPath = `${__PATH_PREFIX__}/`
+    const rootPath = `/ja/`
     let header
 
     if (location.pathname === rootPath) {
@@ -84,7 +84,7 @@ class Layout extends React.Component<any, any> {
           <footer>
             © {new Date().getFullYear()}, Built with
             {` `}
-            <a href="https://www.gatsbyjs.org">Gatsby</a>
+            <a href="https://firebase.google.com" target="_blank">Firebase</a>
           </footer>
         </div>
       </Container>

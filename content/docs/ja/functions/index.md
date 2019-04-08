@@ -5,7 +5,8 @@ description: Cloud Functions for Firebase Guide
 order: 700
 ---
 
-## Docs
+## Firebase Docs
+
 https://firebase.google.com/docs/functions/
 
 ## Point

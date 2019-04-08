@@ -5,7 +5,8 @@ description: Firebase Hosting Guide
 order: 600
 ---
 
-## Docs
+## Firebase Docs
+
 https://firebase.google.com/docs/hosting/
 
 ## Point

@@ -5,7 +5,8 @@ description: Firebase Authentication Guide
 order: 300
 ---
 
-## Docs
+## Firebase Docs
+
 https://firebase.google.com/docs/auth/
 
 ## Point
@@ -17,6 +18,8 @@ https://firebase.google.com/docs/auth/
 １つのアカウントが、複数の認証プロバイダを使用してログインできるようにする場合、任意の認証プロバイダでアカウントを作成後、他の認証プロバイダの認証情報をリンクするという流れになります。
 
 詳しくは[JavaScript を使用してアカウントに複数の認証プロバイダをリンクする](https://firebase.google.com/docs/auth/web/account-linking)に記載されています。
+
+自分で認証ロジックを実装せずに、[FirebaseUI でウェブアプリに簡単にログイン機能を追加する](https://firebase.google.com/docs/auth/web/firebaseui)を参考に、[FirebaseUI](https://github.com/firebase/firebaseui-web)を使っても良いです。
 
 また、[カスタム クレームとセキュリティ ルールによるアクセスの制御](https://firebase.google.com/docs/auth/admin/custom-claims)に、必ず目を通しておきましょう。
 
@@ -42,11 +45,9 @@ boolean/numberで設定できるようなユーザーの属性情報は、カス
 
 ### Facebook認証を使用する場合
 
-- Facebookアプリを公開する
+- リリース前にFacebookアプリを公開しておく
 
-※Facebookアプリを公開していないと、Facebook認証でエラーになります。
-
-※個人開発などで、自分のアカウントで登録したFacebookアプリを使用して開発をしている且つ自分のアカウントでしか認証のテストをしていない場合、アプリを公開していなくても自分のアカウントでは認証はエラーにならず、正常にFacebook認証で登録できてしまうので、Facebookアプリを公開することを忘れてしまう場合があります。
+※開発時など、Facebookアプリを登録したFBアカウントだけで、Facebook認証による登録ができればよい場合は、Facebookアプリが非公開でも、そのFBアカウントで認証すれば、正常にFacebook認証で登録ができます。
 
 ## FAQ
 
