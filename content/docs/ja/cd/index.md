@@ -71,7 +71,7 @@ $ gcloud kms encrypt \
 
 #### firebase.json(環境毎に動作を変更したい場合などは、firebase.prod.jsonを別途用意して、firebase.jsonにコピーしたりもできます)
 
-See: [Firebase CLI リファレンス](https://firebase.google.com/docs/cli/
+See: [Firebase CLI リファレンス](https://firebase.google.com/docs/cli/)
 
 ```
 {
